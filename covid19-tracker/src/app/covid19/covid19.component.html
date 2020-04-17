@@ -1,27 +1,17 @@
+<div class="mat-elevation-z8">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
     <ng-container matColumnDef="country">
       <th mat-header-cell *matHeaderCellDef> Country </th>
       <td mat-cell *matCellDef="let element"> {{element.country}} </td>
     </ng-container>
-  
-    <!-- Name Column -->
     <ng-container matColumnDef="cases">
       <th mat-header-cell *matHeaderCellDef> Cases </th>
       <td mat-cell *matCellDef="let element"> {{element.cases}} </td>
     </ng-container>
-  
-    <!-- Weight Column -->
     <ng-container matColumnDef="todayCases">
       <th mat-header-cell *matHeaderCellDef> TodayCases </th>
       <td mat-cell *matCellDef="let element"> {{element.todayCases}} </td>
     </ng-container>
-  
-    <!-- Symbol Column -->
     <ng-container matColumnDef="deaths">
       <th mat-header-cell *matHeaderCellDef> Deaths </th>
       <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
@@ -31,16 +21,12 @@
         <th mat-header-cell *matHeaderCellDef> Today Deaths </th>
         <td mat-cell *matCellDef="let element"> {{element.todayDeaths}} </td>
       </ng-container>
-    
-      <!-- Name Column -->
       <ng-container matColumnDef="recovered">
         <th mat-header-cell *matHeaderCellDef> Recovered </th>
         <td mat-cell *matCellDef="let element"> {{element.recovered}} </td>
       </ng-container>
-    
-      <!-- Weight Column -->
       <ng-container matColumnDef="active">
-        <th mat-header-cell *matHeaderCellDef> active </th>
+        <th mat-header-cell *matHeaderCellDef> Active </th>
         <td mat-cell *matCellDef="let element"> {{element.active}} </td>
       </ng-container>
 
@@ -48,32 +34,25 @@
         <th mat-header-cell *matHeaderCellDef> Critical </th>
         <td mat-cell *matCellDef="let element"> {{element.critical}} </td>
       </ng-container>
-    
-      <!-- Name Column -->
       <ng-container matColumnDef="casesPerOneMillion">
         <th mat-header-cell *matHeaderCellDef> CasesPerOneMillion </th>
         <td mat-cell *matCellDef="let element"> {{element.casesPerOneMillion}} </td>
       </ng-container>
-    
-      <!-- Weight Column -->
       <ng-container matColumnDef="deathsPerOneMillion">
         <th mat-header-cell *matHeaderCellDef> DeathsPerOneMillion </th>
         <td mat-cell *matCellDef="let element"> {{element.deathsPerOneMillion}} </td>
       </ng-container>
-    
-      <!-- Symbol Column -->
       <ng-container matColumnDef="tests">
         <th mat-header-cell *matHeaderCellDef> Tests </th>
         <td mat-cell *matCellDef="let element"> {{element.tests}} </td>
       </ng-container>
-<!-- Symbol Column -->
-<ng-container matColumnDef="testsPerOneMillion">
-    <th mat-header-cell *matHeaderCellDef> TestsPerOneMillion </th>
-    <td mat-cell *matCellDef="let element"> {{element.testsPerOneMillion}} </td>
-  </ng-container>
+      <ng-container matColumnDef="testsPerOneMillion">
+        <th mat-header-cell *matHeaderCellDef> TestsPerOneMillion </th>
+        <td mat-cell *matCellDef="let element"> {{element.testsPerOneMillion}} </td>
+       </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
-  
+  <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Covid19ServiceService } from '../covid19-service.service';
 import { CountryReports } from 'src/CountryReports';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -11,14 +12,17 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class Covid19Component implements OnInit {
 
-  ELEMENT_DATA : CountryReports[] 
+ 
+  ELEMENT_DATA : CountryReports[];
   displayedColumns: string[] =['country','cases','todayCases','deaths','todayDeaths','recovered','active','critical','casesPerOneMillion','deathsPerOneMillion','tests','testsPerOneMillion'];
   dataSource = new MatTableDataSource<CountryReports>(this.ELEMENT_DATA);
-
+  @ViewChild(MatPaginator,{static:true})
+  paginator : MatPaginator;
 
   constructor(private service: Covid19ServiceService) { }
 
   ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
     this.getAllReports();
   }
   public getAllReports()
