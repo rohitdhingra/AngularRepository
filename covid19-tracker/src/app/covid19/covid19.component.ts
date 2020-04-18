@@ -3,6 +3,7 @@ import { Covid19ServiceService } from '../covid19-service.service';
 import { CountryReports } from 'src/CountryReports';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -19,10 +20,13 @@ export class Covid19Component implements OnInit {
   @ViewChild(MatPaginator,{static:true})
   paginator : MatPaginator;
 
+  @ViewChild(MatSort,{static: true}) sort: MatSort;
+
   constructor(private service: Covid19ServiceService) { }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.getAllReports();
   }
   public getAllReports()
