@@ -35,4 +35,9 @@ export class Covid19Component implements OnInit {
     resp.subscribe(report  => this.dataSource.data=report as CountryReports[]);
   }
 
+  applyFilter(filterValue: String)
+  {
+    // const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
